@@ -1,0 +1,20 @@
+
+.toolbar-item-spacer {
+    flex: 1 1 auto;
+} 
+
+.toolbar-height {
+    height: 70px !important;
+    min-height: 70px !important;
+} 
+
+.font-size2 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 600;
+    font-size: calc(1.2 * 16px);
+}
+
+.font-size3 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: calc(0.5 * 16px);
+}
