@@ -1,11 +1,35 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { MTX_DATETIME_FORMATS } from '@ng-matero/extensions/core';
 import { MtxDatetimepickerType } from '@ng-matero/extensions/datetimepicker';
 
 @Component({
   selector: 'app-form1',
   templateUrl: './form1.component.html',
-  styleUrls: ['./form1.component.scss']
+  styleUrls: ['./form1.component.scss'],
+  providers: [
+    {
+      provide: MTX_DATETIME_FORMATS,
+      useValue: {
+        parse: {
+          dateInput: 'YYYY-MM-DD',
+          monthInput: 'MMMM',
+          timeInput: 'HH:mm',
+          datetimeInput: 'YYYY-MM-DD HH:mm',
+        },
+        display: {
+          dateInput: 'YYYY-MM-DD',
+          monthInput: 'MMMM',
+          timeInput: 'HH:mm:ss',
+          datetimeInput: 'YYYY-MM-DD HH:mm:ss',
+          monthYearLabel: 'YYYY MMMM',
+          dateA11yLabel: 'LL',
+          monthYearA11yLabel: 'MMMM YYYY',
+          popupHeaderDateLabel: 'MMM DD, ddd',
+        },
+      },
+    },
+  ],
 })
 export class Form1Component {
 
@@ -34,13 +58,14 @@ export class Form1Component {
     fbGroup.addControl(this.input1ControlNane, new FormControl(""));
     // Add more controls here
     fbGroup.addControl(this.dt1ControlName, new FormControl(""));
+    //fbGroup.addControl(this.dt1ControlName, new FormControl("1973-11-17 20:30"));
 
     this.demoFormGroup = fbGroup;
   }
 
   onFormSubmit(event: Event): void {
     console.log('Form Submitted', this.demoFormGroup.value);
+
   }
 
 }
-
