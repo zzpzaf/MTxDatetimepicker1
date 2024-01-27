@@ -8,7 +8,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule, } from '@angular/common';
 
 import { MtxDatetimepickerModule, } from '@ng-matero/extensions/datetimepicker';
-import { MtxNativeDatetimeModule } from '@ng-matero/extensions/core';
+//import { MtxNativeDatetimeModule } from '@ng-matero/extensions/core';
+import { MtxMomentDatetimeModule } from '@ng-matero/extensions-moment-adapter';
 
 @NgModule({
   declarations: [],
@@ -21,7 +22,8 @@ import { MtxNativeDatetimeModule } from '@ng-matero/extensions/core';
     MatInputModule,
     MatButtonModule,
     MtxDatetimepickerModule,
-    MtxNativeDatetimeModule,
+    //MtxNativeDatetimeModule,
+    MtxMomentDatetimeModule,
 ], 
     exports: [
     MatToolbarModule,
@@ -31,8 +33,8 @@ import { MtxNativeDatetimeModule } from '@ng-matero/extensions/core';
     MatInputModule,
     MatButtonModule,
     MtxDatetimepickerModule,
-    MtxNativeDatetimeModule,
+    //MtxNativeDatetimeModule,
+    MtxMomentDatetimeModule,
 ]
 })
 export class MaterialModule { }
-
