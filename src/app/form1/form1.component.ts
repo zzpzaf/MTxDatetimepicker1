@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { MTX_DATETIME_FORMATS } from '@ng-matero/extensions/core';
+import {  MTX_DATETIME_FORMATS } from '@ng-matero/extensions/core';
 import { MtxDatetimepickerType } from '@ng-matero/extensions/datetimepicker';
+import { DateTime } from 'luxon';
 
 @Component({
   selector: 'app-form1',
@@ -9,23 +10,25 @@ import { MtxDatetimepickerType } from '@ng-matero/extensions/datetimepicker';
   styleUrls: ['./form1.component.scss'],
   providers: [
     {
-      provide: MTX_DATETIME_FORMATS,
+      provide: MTX_DATETIME_FORMATS,          // For the formatting tokens used in string parsing and formatting with Luxon see at https://github.com/moment/luxon/blob/master/docs/parsing.md and https://github.com/moment/luxon/blob/master/docs/formatting.md  
       useValue: {
         parse: {
-          dateInput: 'YYYY-MM-DD',
-          monthInput: 'MMMM',
+          dateInput: 'yyyy-LL-dd',
+          monthInput: 'LLLL',
+          yearInput: 'yyyy',
+          datetimeInput: 'yyyy-LL-dd HH:mm',       
           timeInput: 'HH:mm',
-          datetimeInput: 'YYYY-MM-DD HH:mm',
         },
         display: {
-          dateInput: 'YYYY-MM-DD',
-          monthInput: 'MMMM',
-          timeInput: 'HH:mm:ss',
-          datetimeInput: 'YYYY-MM-DD HH:mm:ss',
-          monthYearLabel: 'YYYY MMMM',
-          dateA11yLabel: 'LL',
-          monthYearA11yLabel: 'MMMM YYYY',
-          popupHeaderDateLabel: 'MMM DD, ddd',
+          dateInput: 'yyyy-LL-dd',                  
+          monthInput: 'LLLL',                      
+          yearInput: 'yyyy',                        
+          datetimeInput: 'yyyy-LL-dd HH:mm:ss',                                             
+          timeInput: 'HH:mm:ss',                          
+          monthYearLabel: 'yyyy',                  
+          dateA11yLabel: 'DDD',                     
+          monthYearA11yLabel: 'LLLL yyyy',
+          popupHeaderDateLabel: 'dd LLL, ccc',   
         },
       },
     },
@@ -57,8 +60,9 @@ export class Form1Component {
 
     fbGroup.addControl(this.input1ControlNane, new FormControl(""));
     // Add more controls here
-    fbGroup.addControl(this.dt1ControlName, new FormControl(""));
-    //fbGroup.addControl(this.dt1ControlName, new FormControl("1973-11-17 20:30"));
+    //fbGroup.addControl(this.dt1ControlName, new FormControl(""));
+    const dt = DateTime.local();
+    fbGroup.addControl(this.dt1ControlName, new FormControl(dt));
 
     this.demoFormGroup = fbGroup;
   }
