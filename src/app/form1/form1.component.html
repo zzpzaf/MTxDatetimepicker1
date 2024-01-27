@@ -1,27 +1,48 @@
-
-<mat-card >
-
+<mat-card>
+  
     <mat-card-content>
-
+  
         <mat-toolbar class="mat-card-title" color="primary">
-            {{fornCardTitle}}
-        </mat-toolbar>  
+        {{ fornCardTitle }}
+        </mat-toolbar>
 
         <form [formGroup]="demoFormGroup" (ngSubmit)="onFormSubmit($event)">
-
             <mat-form-field class="full-width">
-                <mat-label>{{input1Label}}</mat-label>
-                <input matInput placeholder={{input1Placeholder}} formControlName={{input1ControlNane}} >
+                <mat-label>{{ input1Label }}</mat-label>
+                <input
+                matInput
+                placeholder="{{ input1Placeholder }}"
+                formControlName="{{ input1ControlNane }}"
+                />
             </mat-form-field>
+
+            <!--  For @ng-matero/extensions@16.2.0  DateTimePicker   -->
+            <mat-form-field class="full-width"> 
+                <input
+                    matInput
+                    [mtxDatetimepicker]="datetimePicker"
+                    formControlName="{{ dt1ControlName }}"
+                />
+
+                <mtx-datetimepicker #datetimePicker [type]="mtxType">
+                </mtx-datetimepicker>
+
+                <mtx-datetimepicker-toggle [for]="datetimePicker" matSuffix>
+                </mtx-datetimepicker-toggle>
+            </mat-form-field>
+            <!-- --------------------------------------------------------->
 
             <mat-card-footer>
                 <mat-card-actions>
-                    <button mat-raised-button type="submit" color="accent" > {{submitButtomText}} </button>
+                <button mat-raised-button type="submit" color="accent">
+                    {{ submitButtomText }}
+                </button>
                 </mat-card-actions>
             </mat-card-footer>
-
+        
         </form>
-    
+  
     </mat-card-content>
-
+    
 </mat-card>
+

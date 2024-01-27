@@ -1,6 +1,6 @@
-
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { MtxDatetimepickerType } from '@ng-matero/extensions/datetimepicker';
 
 @Component({
   selector: 'app-form1',
@@ -18,6 +18,9 @@ export class Form1Component {
 
   submitButtomText: string = 'Submit';
 
+  dt1ControlName: string = 'dtpicker1';
+  mtxType!: MtxDatetimepickerType
+
   constructor( private formBuilder: FormBuilder ) { }
 
   
@@ -30,6 +33,7 @@ export class Form1Component {
 
     fbGroup.addControl(this.input1ControlNane, new FormControl(""));
     // Add more controls here
+    fbGroup.addControl(this.dt1ControlName, new FormControl(""));
 
     this.demoFormGroup = fbGroup;
   }
@@ -39,3 +43,4 @@ export class Form1Component {
   }
 
 }
+
