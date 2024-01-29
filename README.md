@@ -6,6 +6,7 @@ Commits for:
 - MtxMomentDatetimeModule
 - MtxLuxonDatetimeModule
 - MtxDateFnsDatetimeModule
+- Switch to the browser language locale
 
 
 

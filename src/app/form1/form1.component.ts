@@ -2,9 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import {  MTX_DATETIME_FORMATS } from '@ng-matero/extensions/core';
 import { MtxDatetimepickerType } from '@ng-matero/extensions/datetimepicker';
-// import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { DateAdapter } from '@angular/material/core';
-import { enGB, fr, el } from 'date-fns/locale';
+import { enUS, enGB, fr, el } from 'date-fns/locale';
 import { format } from 'date-fns';
 
 @Component({
@@ -12,7 +11,6 @@ import { format } from 'date-fns';
   templateUrl: './form1.component.html',
   styleUrls: ['./form1.component.scss'],
   providers: [
-    // {provide: MAT_DATE_LOCALE, useValue: 'en-US'},
     {
       provide: MTX_DATETIME_FORMATS,
       useValue: {
@@ -60,7 +58,9 @@ export class Form1Component {
   
   ngOnInit(): void {
     this.initializeForm();
-    this.setDtLocale(el);
+    //this.setDtLocale(el);
+    this.setDtLocale(navigator.language);
+
   }
 
 
@@ -79,8 +79,24 @@ export class Form1Component {
     this.demoFormGroup = fbGroup;
   }
 
-  setDtLocale(locale: Locale ): void {
-    this.dateAdapter.setLocale(locale);
+  setDtLocale(locale: string ): void {
+
+    switch ( navigator.language ) {
+      case "en-US":
+          this.dateAdapter.setLocale(enUS);
+          break;
+      case "en-GB":
+          this.dateAdapter.setLocale(enGB);
+          break;
+      case "fr":
+          this.dateAdapter.setLocale(fr);
+          break;
+      default: 
+          this.dateAdapter.setLocale(enUS); 
+          break;
+   }
+  //  this.dateAdapter.setLocale(locale);
+
   }
 
   onFormSubmit(event: Event): void {
