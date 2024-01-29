@@ -17,14 +17,14 @@
 
 // Set your theme palettes here. 
 // Use the default them palette  
-$primary: mat.define-palette(mat.$indigo-palette);
-$accent: mat.define-palette(mat.$pink-palette);
-$warn: mat.define-palette(mat.$red-palette);
+// $primary: mat.define-palette(mat.$indigo-palette);
+// $accent: mat.define-palette(mat.$pink-palette);
+// $warn: mat.define-palette(mat.$red-palette);
 
 // Or define your own, e.g.:
-// $primary: mat-palette($mat-blue-grey, 900, 500, 700);
-// $accent: mat-palette($mat-red, 900, 800, 700);
-// $warn: mat-palette($mat-deep-orange);
+$primary: mat-palette($mat-blue-grey, 900, 500, 700);
+$accent: mat-palette($mat-red, 900, 800, 700);
+$warn: mat-palette($mat-deep-orange);
 // The warn palette is optional (defaults to red).
 // For predefined Material color palettes see at:
 // https://m1.material.io/style/color.html#
