@@ -2,15 +2,19 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import {  MTX_DATETIME_FORMATS } from '@ng-matero/extensions/core';
 import { MtxDatetimepickerType } from '@ng-matero/extensions/datetimepicker';
-import { DateTime } from 'luxon';
+// import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { DateAdapter } from '@angular/material/core';
+import { enGB, fr, el } from 'date-fns/locale';
+import { format } from 'date-fns';
 
 @Component({
   selector: 'app-form1',
   templateUrl: './form1.component.html',
   styleUrls: ['./form1.component.scss'],
   providers: [
+    // {provide: MAT_DATE_LOCALE, useValue: 'en-US'},
     {
-      provide: MTX_DATETIME_FORMATS,          // For the formatting tokens used in string parsing and formatting with Luxon see at https://github.com/moment/luxon/blob/master/docs/parsing.md and https://github.com/moment/luxon/blob/master/docs/formatting.md  
+      provide: MTX_DATETIME_FORMATS,
       useValue: {
         parse: {
           dateInput: 'yyyy-LL-dd',
@@ -48,12 +52,19 @@ export class Form1Component {
   dt1ControlName: string = 'dtpicker1';
   mtxType!: MtxDatetimepickerType
 
-  constructor( private formBuilder: FormBuilder ) { }
+  constructor( 
+              private formBuilder: FormBuilder,
+              private dateAdapter: DateAdapter<any>,
+            ) { }
 
   
   ngOnInit(): void {
     this.initializeForm();
+    this.setDtLocale(el);
   }
+
+
+
 
   initializeForm(): void {
     const fbGroup = this.formBuilder.group({});
@@ -61,10 +72,15 @@ export class Form1Component {
     fbGroup.addControl(this.input1ControlNane, new FormControl(""));
     // Add more controls here
     //fbGroup.addControl(this.dt1ControlName, new FormControl(""));
-    const dt = DateTime.local();
+
+    const dt = format(new Date(), "yyyy-LL-dd HH:mm:ss");
     fbGroup.addControl(this.dt1ControlName, new FormControl(dt));
 
     this.demoFormGroup = fbGroup;
+  }
+
+  setDtLocale(locale: Locale ): void {
+    this.dateAdapter.setLocale(locale);
   }
 
   onFormSubmit(event: Event): void {
