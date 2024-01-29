@@ -4,7 +4,8 @@
 Commits for: 
 - MtxNativeDatetimeModule	
 - MtxMomentDatetimeModule
-- MtxLuxonDatetimeModule 
+- MtxLuxonDatetimeModule
+- MtxDateFnsDatetimeModule
 
 
 
