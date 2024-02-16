@@ -7,6 +7,7 @@ Commits for:
 - MtxLuxonDatetimeModule
 - MtxDateFnsDatetimeModule
 - Switch to the browser language locale
+- Dealing with the 'Violation' warning message for non-passive event listener
 
 
 
